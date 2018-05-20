@@ -25,6 +25,7 @@ public class UserController {
 		return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
 	}
 
+	@SuppressWarnings("rawtypes")
 	@GetMapping
 	public ResponseEntity getAllUsers() {
 		return null;
