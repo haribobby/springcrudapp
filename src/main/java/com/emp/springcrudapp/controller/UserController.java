@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.emp.springcrudapp.model.Test;
 import com.emp.springcrudapp.model.User;
 import com.emp.springcrudapp.service.UserService;
 
@@ -27,6 +28,8 @@ public class UserController {
 	@SuppressWarnings("rawtypes")
 	@PostMapping
 	public ResponseEntity createUser(@RequestBody User user) {
+		
+		Test t = new Test();
 
 		LOGGER.info("UserController:::createUser:::User obj is..." + user);
 		return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
@@ -40,6 +43,6 @@ public class UserController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity getUserById(@PathVariable("id") Long id) {
-		return null;
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
