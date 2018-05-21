@@ -1,5 +1,7 @@
 package com.emp.springcrudapp.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,18 +18,22 @@ import com.emp.springcrudapp.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
 	@Autowired
 	private UserService userService;
 
 	@SuppressWarnings("rawtypes")
 	@PostMapping
 	public ResponseEntity createUser(@RequestBody User user) {
+
+		LOGGER.info("UserController:::createUser:::User obj is..." + user);
 		return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
 	}
 
 	@SuppressWarnings("rawtypes")
 	@GetMapping
 	public ResponseEntity getAllUsers() {
-		return null;
+		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
 	}
 }
