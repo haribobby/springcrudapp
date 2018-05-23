@@ -1,16 +1,26 @@
 package com.emp.springcrudapp.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.criteria.JoinType;
+
+import org.hibernate.annotations.Fetch;
 
 
 @Entity
-public class User {
+public class User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1015508331389438258L;
 
 	@Id
 	@GeneratedValue

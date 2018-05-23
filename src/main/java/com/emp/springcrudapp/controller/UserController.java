@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.emp.springcrudapp.model.User;
 import com.emp.springcrudapp.service.UserService;
 /*
-@author Mahesh123
+@author Mahesh
 */
 @RestController
 @RequestMapping("/user")
