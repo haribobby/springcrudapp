@@ -7,6 +7,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.emp.springcrudapp.builder.UserBuilder;
+import com.emp.springcrudapp.dto.UserDTO;
 import com.emp.springcrudapp.model.User;
 import com.emp.springcrudapp.repository.UserRepository;
 
@@ -17,7 +19,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	
+	@Autowired
+	private UserBuilder userBuilder;
 
 	@Override
 	public Long createUser(User user) {
@@ -28,10 +31,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	@Cacheable("userCache")
-	public List<User> getAllUsers() {
+	//@Cacheable("userCache")
+	public List<UserDTO> getAllUsers() {
 		System.out.println("@@@@@@@@@@@@@@@ getAll Users...............");
-		return userRepository.findAll();
+		List<UserDTO> userDTOList = userBuilder.buildEntityListToDTOList(userRepository.findAll());
+		return userDTOList;
 	}
 
 	@Override

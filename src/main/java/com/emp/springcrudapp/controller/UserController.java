@@ -14,11 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.emp.springcrudapp.model.User;
 import com.emp.springcrudapp.service.UserService;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 /*
 @author Mahesh
 */
 @RestController
 @RequestMapping("/user")
+@Api(value = "User Resource", description = "This class is used for  user crud operations")
 public class UserController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
@@ -28,6 +32,7 @@ public class UserController {
 
 	@SuppressWarnings("rawtypes")
 	@PostMapping
+	@ApiOperation(value = "Adding an User", notes = "This method is used for creting an user...")
 	public ResponseEntity createUser(@RequestBody User user) {
 		
 		//Test t = new Test();
@@ -38,6 +43,7 @@ public class UserController {
 
 	//@SuppressWarnings("rawtypes")
 	@GetMapping
+	@ApiOperation(value = "All Users", notes = "This method is used for reteriving all users...")
 	public ResponseEntity getAllUsers() {
 		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
 	}
