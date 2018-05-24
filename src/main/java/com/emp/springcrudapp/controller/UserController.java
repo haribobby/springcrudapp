@@ -1,5 +1,7 @@
 package com.emp.springcrudapp.controller;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,7 @@ public class UserController {
 	@SuppressWarnings("rawtypes")
 	@PostMapping
 	@ApiOperation(value = "Adding an User", notes = "This method is used for creting an user...")
-	public ResponseEntity createUser(@RequestBody User user) {
+	public ResponseEntity createUser(@RequestBody @Valid User user) {
 		
 		//Test t = new Test();
 

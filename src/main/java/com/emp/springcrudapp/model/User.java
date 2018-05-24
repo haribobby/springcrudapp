@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.criteria.JoinType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Fetch;
 
@@ -26,8 +28,12 @@ public class User implements Serializable{
 	@GeneratedValue
 	private Long id;
 
+	@Size(min=3, max=7)
+	@NotNull
 	private String name;
+	@NotNull(message="Address Should not be empty")
 	private String address;
+	@NotNull(message="Mobile number Should not be empty")
 	private String mobileNumber;
 
 	@OneToMany(cascade=CascadeType.ALL)
