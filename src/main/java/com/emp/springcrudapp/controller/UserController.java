@@ -38,7 +38,6 @@ public class UserController {
 	public ResponseEntity createUser(@RequestBody @Valid User user) {
 		
 		//Test t = new Test();
-
 		LOGGER.info("UserController:::createUser:::User obj is..." + user);
 		return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
 	}
@@ -47,6 +46,11 @@ public class UserController {
 	@GetMapping
 	@ApiOperation(value = "All Users", notes = "This method is used for reteriving all users...")
 	public ResponseEntity getAllUsers() {
+		LOGGER.debug("UserController:::createUser:::User obj is...debug" );
+		LOGGER.info("UserController:::createUser:::User obj is...infoo");
+		LOGGER.error("UserController:::createUser:::User obj is...error");
+		LOGGER.warn("UserController:::createUser:::User obj is...warn");
+		//LOGGER.fatal("UserController:::createUser:::User obj is...infoo");
 		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
 	}
 	
